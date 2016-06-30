@@ -106,7 +106,4 @@ to technical questions.
 List the version of Python you’re using. (There are some key differences between version 2 Python interpreters and version 3 
 Python interpreters.) Also, say which operating system and version you’re running.
 If the error came up after you made a change to your code, explain exactly what you changed.
-Say whether you’re able to reproduce the error every time you run the program or whether it happens only after you perform 
-certain actions. Explain what those actions are, if so.
-Always follow good online etiquette as well. For example, don’t post your questions in all caps or make unreasonable demands 
-of the people trying to help you.
+
