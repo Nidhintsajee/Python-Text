@@ -190,4 +190,120 @@ What is your age?
 4
 You will be 5 in a year.
 >>>
+Dissecting Your Program
+-----------------------
+Comments
+The following line is called a comment.
 
+➊ # This program says hello and asks for my name.
+Python ignores comments, and you can use them to write notes or remind yourself what the code is trying to do. Any text for 
+the rest of the line following a hash mark (#) is part of a comment.
+The print() Function
+The print() function displays the string value inside the parentheses on the screen.
+
+➋ print('Hello world!')
+   print('What is your name?') # ask for their name
+The input() Function
+The input() function waits for the user to type some text on the keyboard and press ENTER.
+
+➌ myName = input()
+This function call evaluates to a string equal to the user’s text, and the previous line of code assigns the myName variable 
+to this string value.
+Printing the User’s Name
+The following call to print() actually contains the expression 'It is good to meet you, ' + myName between the parentheses.
+
+➍ print('It is good to meet you, ' + myName)
+The len() Function
+You can pass the len() function a string value (or a variable containing a string), and the function evaluates to the 
+integer value of the number of characters in that string.
+
+➎ print('The length of your name is:')
+   print(len(myName))
+Enter the following into the interactive shell to try this:
+
+>>> len('hello')
+5
+>>> len('My very energetic monster just scarfed nachos.')
+46
+>>> len('')
+0
+>>> print('I am ' + 29 + ' years old.')
+Traceback (most recent call last):
+  File "<pyshell#6>", line 1, in <module>
+    print('I am ' + 29 + ' years old.')
+TypeError: Can't convert 'int' object to str implicitly
+Python gives an error because you can use the + operator only to add two integers together or concatenate two strings.
+The str(), int(), and float() Functions
+If you want to concatenate an integer such as 29 with a string to pass to print(), you’ll need to get the value '29', which 
+is the string form of 29. The str() function can be passed an integer value and will evaluate to a string value version of 
+it, as follows:
+
+>>> str(29)
+'29'
+>>> print('I am ' + str(29) + ' years old.')
+I am 29 years old.
+The str(), int(), and float() functions will evaluate to the string, integer, and floating-point forms of the value you pass,
+respectively. Try converting some values in the interactive shell with these functions, and watch what happens.
+
+>>> str(0)
+'0'
+>>> str(-3.14)
+'-3.14'
+>>> int('42')
+42
+>>> int('-99')
+-99
+>>> int(1.25)
+1
+>>> int(1.99)
+1
+>>> float('3.14')
+3.14
+>>> float(10)
+10.0
+>>> spam = input()
+101
+>>> spam
+'101'
+The value stored inside spam isn’t the integer 101 but the string '101'.
+>>> spam = int(spam)
+>>> spam
+101
+>>> spam * 10 / 5
+202.0
+Python will display an error message.
+
+>>> int('99.99')
+Traceback (most recent call last):
+  File "<pyshell#18>", line 1, in <module>
+    int('99.99')
+ValueError: invalid literal for int() with base 10: '99.99'
+>>> int('twelve')
+Traceback (most recent call last):
+  File "<pyshell#19>", line 1, in <module>
+    int('twelve')
+ValueError: invalid literal for int() with base 10: 'twelve'
+The int() function is also useful if you need to round a floating-point number down. If you want to round a floating-point 
+number up, just add 1 to it afterward.
+
+>>> int(7.7)
+7
+>>> int(7.7) + 1
+8
+n your program, you used the int() and str() functions in the last three lines to get a value of the appropriate data type 
+for the code.
+
+➏ print('What is your age?') # ask for their age
+   myAge = input()
+   print('You will be ' + str(int(myAge) + 1) + ' in a year.')
+TEXT AND NUMBER EQUIVALENCE
+Although the string value of a number is considered a completely different value from the integer or floating-point version,
+an integer can be equal to a floating point.
+
+>>> 42 == '42'
+False
+>>> 42 == 42.0
+True
+>>> 42.0 == 0042.000
+True
+Python makes this distinction because strings are text, while integers and floats are both numbers.
