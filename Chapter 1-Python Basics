@@ -9,9 +9,11 @@ Type "copyright", "credits" or "license()" for more information.
 >>> 2 + 2
 4
 >>>
-There are plenty of other operators you can use in Python expressions, too. For example, lists all the math operators in 
-Python. Math Operators from Highest to Lowest Precedence
+There are plenty of other operators you can use in Python expressions, 
+Math Operators from Highest to Lowest Precedence
+-------------------------------------------------
 Operator    Operation         Example   Evaluates to...
+-------------------------------------------------------
 **          Exponent          2 ** 3    8
 %           Modulus/
             remainder         22 % 8    6
@@ -21,3 +23,171 @@ Operator    Operation         Example   Evaluates to...
 *           Multiplication    3 * 5     15
 -           Subtraction       5 - 2     3
 +           Addition          2 + 2     4
+----------------------------------------------------------
+
+>>> 2 + 3 * 6
+20
+>>> (2 + 3) * 6
+30
+>>> 48565878 * 578453
+28093077826734
+>>> 2 ** 8
+256
+>>> 23 / 7
+3.2857142857142856
+>>> 23 // 7
+3
+>>> 23 % 7
+2
+>>> 2     +            2
+4
+>>> (5 - 1) * ((7 + 1) / (3 - 1))
+16.0
+rules for putting operators and values together to form expressions are a fundamental part of Python as a programming 
+language, just like the grammar rules that help us communicate. Similarly, if you type in a bad Python instruction, Python 
+won’t be able to understand it and will display a SyntaxError error message, as shown here:
+
+>>> 5 +
+  File "<stdin>", line 1
+    5 +
+      ^
+SyntaxError: invalid syntax
+>>> 42 + 5 + * 2
+  File "<stdin>", line 1
+    42 + 5 + * 2
+             ^
+SyntaxError: invalid syntax
+The Integer, Floating-Point, and String Data Types
+--------------------------------------------------
+Common Data Types
+Data type              Examples
+Integers               -2, -1, 0, 1, 2, 3, 4, 5
+Floating-point numbers -1.25, -1.0, --0.5, 0.0, 0.5, 1.0, 1.25
+Strings                'a', 'aa', 'aaa', 'Hello!', '11 cats'
+--------------------------------------------------------------
+If you ever see the error message SyntaxError: EOL while scanning string literal, you probably forgot the final single quote 
+character at the end of the string, such as in this example:
+
+>>> 'Hello world!
+SyntaxError: EOL while scanning string literal
+String Concatenation and Replication
+------------------------------------
+when + is used on two string values, it joins the strings as the string concatenation operator. Enter the following into the
+interactive shell:
+
+>>> 'Alice' + 'Bob'
+'AliceBob'
+ if you try to use the + operator on a string and an integer value, Python will not know how to handle this, and it will 
+ display an error message.
+
+>>> 'Alice' + 42
+Traceback (most recent call last):
+  File "<pyshell#26>", line 1, in <module>
+    'Alice' + 42
+TypeError: Can't convert 'int' object to str implicitly
+The * operator is used for multiplication when it operates on two integer or floating-point values. But when the * operator 
+is used on one string value and one integer value, it becomes the string replication operator. Enter a string multiplied 
+by a number into the interactive shell to see this in action.
+
+>>> 'Alice' * 5
+'AliceAliceAliceAliceAlice'
+The * operator can be used with only two numeric values (for multiplication) or one string value and one integer value 
+(for string replication). Otherwise, Python will just display an error message.
+
+>>> 'Alice' * 'Bob'
+Traceback (most recent call last):
+  File "<pyshell#32>", line 1, in <module>
+    'Alice' * 'Bob'
+TypeError: can't multiply sequence by non-int of type 'str'
+>>> 'Alice' * 5.0
+Traceback (most recent call last):
+  File "<pyshell#33>", line 1, in <module>
+    'Alice' * 5.0
+TypeError: can't multiply sequence by non-int of type 'float'
+
+Storing Values in Variables
+---------------------------
+Assignment Statements
+You’ll store values in variables with an assignment statement. An assignment statement consists of a variable name, an 
+equalsign (called the assignment operator), and the value to be stored. If you enter the assignment statement spam = 42, 
+then a variable named spam will have the integer value 42 stored in it. enter the following into the interactive shell:
+
+➊ >>> spam = 40
+   >>> spam
+   40
+   >>> eggs = 2
+➋ >>> spam + eggs
+   42
+   >>> spam + eggs + spam
+   82
+➌ >>> spam = spam + 2
+   >>> spam
+   42
+A variable is initialized (or created) the first time a value is stored in it ➊. After that, you can use it in expressions 
+with other variables and values ➋. When a variable is assigned a new value ➌, the old value is forgotten, which is why spam 
+evaluated to 42 instead of 40 at the end of the example. This is called overwriting the variable. Enter the following code 
+into the interactive shell to try overwriting a string:
+
+>>> spam = 'Hello'
+>>> spam
+'Hello'
+>>> spam = 'Goodbye'
+>>> spam
+'Goodbye'
+Variable Names
+You can name a variable anything as long as it obeys the following three rules:
+*It can be only one word.
+*It can use only letters, numbers, and the underscore (_) character.
+*It can’t begin with a number.
+Valid variable names    Invalid variable names
+--------------------------------------------------------------
+balance                 current-balance (hyphens are not allowed)
+currentBalance          current balance (spaces are not allowed)
+current_balance         4account (can’t begin with a number)
+_spam                   42 (can’t begin with a number)
+SPAM                    total_$um (special characters like $ are not allowed)
+account4                'hello' (special characters like ' are not allowed)
+---------------------------------------------------------------------------
+Variable names are case-sensitive, meaning that spam, SPAM, Spam, and sPaM are four different variables. It is a Python 
+convention to start your variables with a lowercase letter.
+Your First Program
+------------------
+While the interactive shell is good for running Python instructions one at a time, to write entire Python programs, you’ll
+type the instructions into the file editor The file editor lets you type in many instructions, save the file, and run the 
+program. Here’s how you can tell the difference between the two:
+*The interactive shell window will always be the one with the >>> prompt.
+*The file editor window will not have the >>> prompt.
+Now it’s time to create your first program! When the file editor window opens, type the following into it:
+
+➊ # This program says hello and asks for my name.
+
+➋ print('Hello world!')
+   print('What is your name?')    # ask for their name
+➌ myName = input()
+➍ print('It is good to meet you, ' + myName)
+➎ print('The length of your name is:')
+   print(len(myName))
+➏ print('What is your age?')    # ask for their age
+   myAge = input()
+   print('You will be ' + str(int(myAge) + 1) + ' in a year.')
+Once you’ve entered your source code, save it so that you won’t have to retype it each time you start IDLE. From the menu 
+at the top of the file editor window, select File▸Save As. In the Save As window, enter hello.py in the File Name field and
+then click Save. Once you’ve saved, let’s run our program. Select Run▸Run Module or just press the F5 key. The program’s 
+output in the interactive shell should look something like this:
+
+Python 3.3.2 (v3.3.2:d047928ae3f6, May 16 2013, 00:06:53) [MSC v.1600 64 bit
+(AMD64)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> ================================ RESTART ================================
+>>>
+Hello world!
+What is your name?
+Al
+It is good to meet you, Al
+The length of your name is:
+2
+What is your age?
+4
+You will be 5 in a year.
+>>>
+
