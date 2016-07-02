@@ -1,0 +1,429 @@
+Boolean Values
+--------------
+While the integer, floating-point, and string data types have an unlimited number of possible values, the Boolean data type has
+only two values: True and False
+>>> spam = True     # (1)
+>>> spam
+True
+>>> true            # (2)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'true' is not defined
+>>> True = 2 + 2    # (3)
+  File "<stdin>", line 1
+SyntaxError: can't assign to keyword
+>>>
+Comparison Operators
+Comparison operators compare two values and evaluate down to a single Boolean value. Table 2-1 lists the comparison operators.
+Operator  Meaning
+------------------
+==        Equal to
+!=        Not equal to
+<         Less than
+>         Greater than
+<=        Less than or equal to
+>=        Greater than or equal to
+-------------------------------------
+>>> 42 == 42
+True
+>>> 42 == 99
+False
+>>> 2 != 3
+True
+>>> 2 != 2
+False
+>>> 'hello' == 'hello'
+True
+>>> 42 < 100
+True
+>>> 42 > 100
+False
+>>> 42 < 42
+False
+>>> eggCount = 42
+>>> eggCount <= 42
+True
+>>> myAge = 29
+>>> myAge >= 10
+True
+THE DIFFERENCE BETWEEN THE == AND = OPERATORS
+You might have noticed that the == operator (equal to) has two equal signs, while the = operator (assignment) has just one 
+equal sign. It’s easy to confuse these two operators with each other. Just remember these points:
+*The == operator (equal to) asks whether two values are the same as each other.
+*The = operator (assignment) puts the value on the right into the variable on the left.
+To help remember which is which, notice that the == operator (equal to) consists of two characters, just like the != operator
+(not equal to) consists of two characters.
+Boolean Operators
+-----------------
+The three Boolean operators (and, or, and not) are used to compare Boolean values.
+Binary Boolean Operators
+>>> True and True
+True
+>>> True and False
+False
+>>>
+A truth table shows every possible result of a Boolean operator. 
+The and Operator’s Truth Table
+Expression        Evaluates to...
+-------------------------------
+True and True     True
+True and False    False
+False and True    False
+False and False   False
+--------------------------------
+>>> False or True
+True
+>>> False or False
+False
+>>> 
+The or Operator’s Truth Table
+Expression        Evaluates to...
+-------------------------------
+True or True      True
+True or False     True
+False or True     True
+False or False    False
+-----------------------------
+The not Operator
+>>> not True
+False
+>>> not not not not True    # (1)
+True
+>>> 
+The not Operator’s Truth Table
+Expression    Evaluates to...
+-----------------------------
+not True      False
+not False     True
+---------------------------
+Mixing Boolean and Comparison Operators
+--------------------------------------
+>>> (4 < 5) and (5 < 6)
+True
+>>> (4 < 5) and (9 < 6)
+False
+>>> (1 == 2) or (2 == 2)
+True
+>>> 2 + 2 == 4 and not 2 + 2 == 5 and 2 * 2 == 2 + 2
+True
+>>> 
+Elements of Flow Control
+-----------------------
+Flow control statements often start with a part called the condition, and all are followed by a block of code called the clause. 
+Conditions: The Boolean expressions you’ve seen so far could all be considered conditions,
+Blocks of Code: Lines of Python code can be grouped together in blocks.
+There are three rules for blocks.
+*Blocks begin when the indentation increases.
+*Blocks can contain other blocks.
+*Blocks end when the indentation decreases to zero or to a containing block’s indentation.
+main.py: 
+name = 'Mary'
+password = 'swordfish'
+if name == 'Mary':
+    print('Hello Mary')
+    if password == 'swordfish':
+        print('Access granted.')
+    else:
+        print('Wrong password.')
+
+o/p:Hello Mary
+Access granted.
+The first block of code ➊ starts at the line print('Hello Mary') and contains all the lines after it. Inside this block is 
+another block ➋, which has only a single line in it: print('Access Granted.'). The third block ➌ is also one line long: 
+print('Wrong password.').
+Program Execution
+----------------
+Python started executing instructions at the top of the program going down, one after another. The program execution 
+(or simply, execution) is a term for the current instruction being executed. If you print the source code on paper and put 
+your finger on each line as it is executed, you can think of your finger as the program execution.
+Flow Control Statements
+-----------------------
+if Statements: The most common type of flow control statement is the if statement.
+In Python, an if statement consists of the following:
+*The if keyword
+*A condition (that is, an expression that evaluates to True or False)
+*A colon
+*Starting on the next line, an indented block of code (called the if clause)
+if name == 'Alice':
+    print('Hi, Alice.')
+
+else Statements: An if clause can optionally be followed by an else statement.
+An else statement doesn’t have a condition, and in code, an else statement always consists of the following:
+*The else keyword
+*A colon
+*Starting on the next line, an indented block of code (called the else clause)
+main.py:
+name = 'Bob'
+if name == 'Alice':
+    print('Hi, Alice.')
+else:
+    print('Hello, stranger.')
+
+o/p:Hello, stranger.
+elif Statements: While only one of the if or else clauses will execute, you may have a case where you want one of many 
+possible clauses to execute.In code, an elif statement always consists of the following:
+*The elif keyword
+*A condition (that is, an expression that evaluates to True or False)
+*A colon
+*Starting on the next line, an indented block of code (called the elif clause)
+main.py:
+name = 'Bob'
+age = 5
+if name == 'Alice':
+    print('Hi, Alice.')
+elif age < 12:
+    print('You are not Alice, kiddo.')
+
+o/p:You are not Alice, kiddo.
+main.py:
+name = 'Dracula'
+age = 4000
+if name == 'Alice':
+    print('Hi, Alice.')
+elif age < 12:
+    print('You are not Alice, kiddo.')
+elif age > 2000:
+    print('Unlike you, Alice is not an undead, immortal vampire.')
+elif age > 100:
+    print('You are not Alice, grannie.')
+
+o/p:Unlike you, Alice is not an undead, immortal vampire.
+main.py:
+ame = 'Dracula'
+age = 4000
+if name == 'Alice':
+    print('Hi, Alice.')
+elif age < 12:
+    print('You are not Alice, kiddo.')
+elif age > 100:
+    print('You are not Alice, grannie.')
+elif age > 2000:
+    print('Unlike you, Alice is not an undead, immortal vampire.')
+
+o/p:You are not Alice, grannie.
+main.py:
+name = 'Bob'
+age = 30
+if name == 'Alice':
+    print('Hi, Alice.')
+elif age < 12:
+    print('You are not Alice, kiddo.')
+else:
+    print('You are neither Alice nor a little kid.')
+    
+o/p:You are neither Alice nor a little kid.
+while Loop Statements: You can make a block of code execute over and over again with a while statement.
+In code, a while statement always consists of the following:
+*The while keyword
+*A condition (that is, an expression that evaluates to True or False)
+*A colon
+*Starting on the next line, an indented block of code (called the while clause)
+main.py:
+spam = 0
+if spam < 5:
+    print('Hello, world.')
+    spam = spam + 1
+o/p:Hello, world.
+ Here is the code with a while statement:
+main.py:
+spam = 0
+while spam < 5:
+    print('Hello, world.')
+    spam = spam + 1
+
+o/p:Hello, world.
+Hello, world.
+Hello, world.
+Hello, world.
+Hello, world.
+ An Annoying while Loop
+ ----------------------
+Here’s a small example program that will keep asking you to type, literally, your name.
+main.py:
+name = ''                           # (1)
+while name != 'your name':          # (2)
+    print('Please type your name.')
+    name = input()                  # (3)
+print('Thank you!')                 # (4)
+
+o/p:Please type your name.
+ nidhin
+Please type your name.
+ your name
+Thank you!
+break Statements: There is a shortcut to getting the program execution to break out of a while loop’s clause early.
+main.py:
+while True:                         # (1)
+    print('Please type your name.')
+    name = input()                  # (2)
+    if name == 'your name':         # (3)
+        break                       # (4)
+print('Thank you!')                 # (5)
+
+o/p:Please type your name.
+ nidhin
+Please type your name.
+ your name
+Thank you!
+ continue Statements: Like break statements, continue statements are used inside loops.
+ TRAPPED IN AN INFINITE LOOP?
+If you ever run a program that has a bug causing it to get stuck in an infinite loop, press CTRL-C. This will send a 
+KeyboardInterrupt error to your program and cause it to stop immediately. To try it, create a simple infinite loop in the 
+file editor, and save it as infiniteloop.py.
+
+while True:
+    print('Hello world!')
+When you run this program, it will print Hello world! to the screen forever, because the while statement’s condition is 
+always True. In IDLE’s interactive shell window, there are only two ways to stop this program: press CTRL-C or select Shell
+▸ restart Shell from the menu. CTRL-C is handy if you ever want to terminate your program immediately, even if it’s not 
+stuck in an infinite loop.
+main.py:
+while True:
+  print('Who are you?')
+  name = input()
+  if name != 'Joe':       #(1)
+    continue              #(2)
+  print('Hello, Joe. What is the password? (It is a fish.)') 
+  password = input()      #(3)
+  if password == 'swordfish':
+    break                 #(4)
+print('Access granted.')  #(5)
+
+o/p:Who are you?
+ Joe
+Hello, Joe. What is the password? (It is a fish.)
+ swordfish
+Access granted.
+“TRUTHY” AND “FALSEY” VALUES
+There are some values in other data types that conditions will consider equivalent to True and False. When used in conditions,
+0, 0.0, and '' (the empty string) are considered False, while all other values are considered True. For example, look at the 
+following program:
+main.py
+name = ''
+while not name: #(1)
+    print('Enter your name:')
+    name = input()
+print('How many guests will you have?')
+numOfGuests = int(input())
+if numOfGuests: #(2)
+    print('Be sure to have enough room for all your guests.') #(3)
+print('Done')
+
+o/p:Enter your name:
+ nidhin
+How many guests will you have?
+ 2
+Be sure to have enough room for all your guests.
+Done
+ If the user enters a blank string for name, then the while statement’s condition will be True ➊, and the program continues
+ to ask for a name. If the value for numOfGuests is not 0 ➋, then the condition is considered to be True, and the program 
+ will print a reminder for the user ➌. You could have typed not name != '' instead of not name, and numOfGuests != 0 instead 
+ of numOfGuests, but using the truthy and falsey values can make your code easier to read.
+for Loops and the range() Function
+In code, a for statement looks something like for i in range(5): and always includes the following:
+*The for keyword
+*A variable name
+*The in keyword
+*A call to the range() method with up to three integers passed to it
+*A colon
+*Starting on the next line, an indented block of code (called the for clause)
+main.py:
+print('My name is')
+for i in range(5):
+    print('Jimmy Five Times (' + str(i) + ')')
+
+o/p:My name is
+Jimmy Five Times (0)
+Jimmy Five Times (1)
+Jimmy Five Times (2)
+Jimmy Five Times (3)
+Jimmy Five Times (4)
+You can use break and continue statements inside for loops as well. The continue statement will continue to the next value of
+the for loop’s counter, as if the program execution had reached the end of the loop and returned to the start. In fact, you 
+can use continue and break statements only inside while and for loops. If you try to use these statements elsewhere, Python 
+will give you an error.
+main.py:
+total = 0               #(1)
+for num in range(101):  #(2)
+   total = total + num  #(3)
+print(total)            #(4)
+
+o/p:5050
+An Equivalent while Loop
+-----------------------
+main.py:
+print('My name is')
+i = 0
+while i < 5:
+    print('Jimmy Five Times (' + str(i) + ')')
+    i = i + 1
+
+o/p:My name is
+Jimmy Five Times (0)
+Jimmy Five Times (1)
+Jimmy Five Times (2)
+Jimmy Five Times (3)
+Jimmy Five Times (4)
+The Starting, Stopping, and Stepping Arguments to range()
+main.py:
+for i in range(12, 16):
+    print(i)
+
+o/p:12
+13
+14
+15
+The range() function can also be called with three arguments. The first two arguments will be the start and stop values, and
+the third will be the step argument. 
+main.py:
+for i in range(0, 10, 2):
+    print(i)
+o/p:0
+2
+4
+6
+8
+main.py:
+for i in range(5, -1, -1):
+    print(i)
+o/p:5
+4
+3
+2
+1
+0
+ 
+Importing Modules
+----------------
+Python also comes with a set of modules called the standard library.
+In code, an import statement consists of the following:
+*The import keyword
+*The name of the module
+*Optionally, more module names, as long as they are separated by commas
+main.py:
+import random
+for i in range(5):
+    print(random.randint(1, 10))
+ o/p:3
+6
+8
+9
+9
+Here’s an example of an import statement that imports four different modules:
+import random, sys, os, math
+from import Statements
+An alternative form of the import statement is composed of the from keyword, followed by the module name, the import keyword, 
+and a star; for example, from random import *.
+Ending a Program Early with sys.exit()
+-------------------------------------
+Open a new file editor window and enter the following code, saving it as exitExample.py:
+
+import sys
+
+while True:
+    print('Type exit to exit.')
+    response = input()
+    if response == 'exit':
+        sys.exit()
+    print('You typed ' + response + '.')
+Run this program in IDLE. This program has an infinite loop with no break statement inside.
