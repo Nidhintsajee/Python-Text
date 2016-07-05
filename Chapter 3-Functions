@@ -25,3 +25,90 @@ Hello there.
 Howdy!
 Howdy!!!
 Hello there.
+def Statements with Parameters
+-----------------------------
+When you call the print() or len() function, you pass in values, called arguments in this context, by typing them between the 
+parentheses.Type this example into the file editor and save it as helloFunc2.py:
+
+➊ def hello(name):
+➋     print('Hello ' + name)
+
+➌ hello('Alice')
+  hello('Bob')
+When you run this program, the output looks like this:
+
+Hello Alice
+Hello Bob
+Return Values and return Statements
+-----------------------------------
+A return statement consists of the following:
+*The return keyword
+*The value or expression that the function should return
+Type this code into the file editor and save it as magic8Ball.py:
+
+➊ import random
+➋ def getAnswer(answerNumber):
+➌     if answerNumber == 1:
+           return 'It is certain'
+       elif answerNumber == 2:
+           return 'It is decidedly so'
+       elif answerNumber == 3:
+           return 'Yes'
+       elif answerNumber == 4:
+           return 'Reply hazy try again'
+       elif answerNumber == 5:
+           return 'Ask again later'
+       elif answerNumber == 6:
+           return 'Concentrate and ask again'
+       elif answerNumber == 7:
+           return 'My reply is no'
+       elif answerNumber == 8:
+           return 'Outlook not so good'
+       elif answerNumber == 9:
+           return 'Very doubtful'
+
+➍ r = random.randint(1, 9)
+➎ fortune = getAnswer(r)
+➏ print(fortune)
+Note that since you can pass return values as an argument to another function call, you could shorten these three lines:
+
+r = random.randint(1, 9)
+fortune = getAnswer(r)
+print(fortune)
+to this single equivalent line:
+
+print(getAnswer(random.randint(1, 9)))
+The None Value
+--------------
+In Python there is a value called None, which represents the absence of a value. None is the only value of the NoneType data type.
+To see this in action, enter the following into the interactive shell:
+
+>>> spam = print('Hello!')
+Hello!
+>>> None == spam
+True
+Keyword Arguments and print()
+-----------------------------
+If you ran the following program:
+
+print('Hello')
+print('World')
+the output would look like this:
+
+Hello
+World
+For example, if the program were this:
+
+print('Hello', end='')
+print('World')
+the output would look like this:
+
+HelloWorld
+Enter the following into the interactive shell:
+
+>>> print('cats', 'dogs', 'mice')
+cats dogs mice
+But you could replace the default separating string by passing the sep keyword argument. Enter the following into the interactive shell:
+
+>>> print('cats', 'dogs', 'mice', sep=',')
+cats,dogs,mice
