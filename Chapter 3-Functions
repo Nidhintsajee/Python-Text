@@ -207,3 +207,152 @@ The global Statement
 When you run this program, the final print() call will output this:
 
 spam
+There are four rules to tell whether a variable is in a local scope or global scope:
+1. If a variable is being used in the global scope (that is, outside of all functions), then it is always a global variable.
+2. If there is a global statement for that variable in a function, it is a global variable.
+3. Otherwise, if the variable is used in an assignment statement in the function, it is a local variable.
+4. But if the variable is not used in an assignment statement, it is a global variable.
+To get a better feel for these rules, here’s an example program. Type the following code into the file editor and save it as sameName3.py:
+
+  def spam():
+➊  global eggs
+    eggs = 'spam' # this is the global
+
+  def bacon():
+➋  eggs = 'bacon' # this is a local
+  def ham():
+➌  print(eggs) # this is the global
+
+  eggs = 42 # this is the global
+  spam()
+  print(eggs)
+   If you run sameName3.py, the output will look like this:
+
+spam
+If you try to use a local variable in a function before you assign a value to it, as in the following program, Python will 
+give you an error. To see this, type the following into the file editor and save it as sameName4.py:
+
+  def spam():
+      print(eggs) # ERROR!
+➊    eggs = 'spam local'
+
+➋ eggs = 'global'
+   spam()
+If you run the previous program, it produces an error message.
+
+Traceback (most recent call last):
+  File "C:/test3784.py", line 6, in <module>
+    spam()
+  File "C:/test3784.py", line 2, in spam
+    print(eggs) # ERROR!
+UnboundLocalError: local variable 'eggs' referenced before assignment
+Exception Handling
+-----------------
+Right now, getting an error, or exception, in your Python program means the entire program will crash. You don’t want this to
+happen in real-world programs. Instead, you want the program to detect errors, handle them, and then continue to run.
+For example, consider the following program, which has a “divide-by-zero” error. Open a new file editor window and enter the
+following code, saving it as zeroDivide.py:
+
+def spam(divideBy):
+    return 42 / divideBy
+
+print(spam(2))
+print(spam(12))
+print(spam(0))
+print(spam(1))
+We’ve defined a function called spam, given it a parameter, and then printed the value of that function with various parameters
+to see what happens. This is the output you get when you run the previous code:
+
+21.0
+3.5
+Traceback (most recent call last):
+  File "C:/zeroDivide.py", line 6, in <module>
+    print(spam(0))
+  File "C:/zeroDivide.py", line 2, in spam
+    return 42 / divideBy
+ZeroDivisionError: division by zero
+Errors can be handled with try and except statements.
+You can put the previous divide-by-zero code in a try clause and have an except clause contain code to handle what happens 
+when this error occurs.
+
+def spam(divideBy):
+    try:
+        return 42 / divideBy
+    except ZeroDivisionError:
+        print('Error: Invalid argument.')
+
+print(spam(2))
+print(spam(12))
+print(spam(0))
+print(spam(1))
+When code in a try clause causes an error, the program execution immediately moves to the code in the except clause. After 
+running that code, the execution continues as normal. The output of the previous program is as follows:
+
+21.0
+3.5
+Error: Invalid argument.
+None
+42.0
+Note that any errors that occur in function calls in a try block will also be caught. Consider the following program, which 
+instead has the spam() calls in the try block:
+
+def spam(divideBy):
+    return 42 / divideBy
+
+try:
+    print(spam(2))
+    print(spam(12))
+    print(spam(0))
+    print(spam(1))
+except ZeroDivisionError:
+    print('Error: Invalid argument.')
+When this program is run, the output looks like this:
+
+21.0
+3.5
+Error: Invalid argument.
+A Short Program: Guess the Number
+--------------------------------
+When you run this program, the output will look something like this:
+
+I am thinking of a number between 1 and 20.
+Take a guess.
+10
+Your guess is too low.
+Take a guess.
+15
+Your guess is too low.
+Take a guess.
+17
+Your guess is too high.
+Take a guess.
+16
+Good job! You guessed my number in 4 guesses!
+Type the following source code into the file editor, and save the file as guessTheNumber.py:
+
+# This is a guess the number game.
+import random
+secretNumber = random.randint(1, 20)
+print('I am thinking of a number between 1 and 20.')
+
+# Ask the player to guess 6 times.
+for guessesTaken in range(1, 7):
+    print('Take a guess.')
+    guess = int(input())
+
+    if guess < secretNumber:
+        print('Your guess is too low.')
+    elif guess > secretNumber:
+        print('Your guess is too high.')
+    else:
+        break    # This condition is the correct guess!
+
+if guess == secretNumber:
+    print('Good job! You guessed my number in ' + str(guessesTaken) + ' guesses!')
+else:
+    print('Nope. The number I was thinking of was ' + str(secretNumber))
+Let’s look at this code line by line, starting at the top.
+
+# This is a guess the number game.
+import random
+secretNumber = random.randint(1, 20)
