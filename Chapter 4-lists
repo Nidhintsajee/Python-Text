@@ -316,6 +316,115 @@ The cat names are:
 The benefit of using a list is that your data is now in a structure, so your program is much more flexible in processing the data than it would be with several repetitive variables.
 Using for Loops with Lists
 --------------------------
+>>> supplies = ['pens', 'staplers', 'flame-throwers', 'binders']
+>>> for i in range(len(supplies)):
+    print('Index ' + str(i) + ' in supplies is: ' + supplies[i])
+
+Index 0 in supplies is: pens
+Index 1 in supplies is: staplers
+Index 2 in supplies is: flame-throwers
+Index 3 in supplies is: binders
+The in and not in Operators
+---------------------------
+>>> 'howdy' in ['hello', 'hi', 'howdy', 'heyas']
+True
+>>> spam = ['hello', 'hi', 'howdy', 'heyas']
+>>> 'cat' in spam
+False
+>>> 'howdy' not in spam
+False
+>>> 'cat' not in spam
+True
+myPets.py:
+
+myPets = ['Zophie', 'Pooka', 'Fat-tail']
+print('Enter a pet name:')
+name = input()
+if name not in myPets:
+    print('I do not have a pet named ' + name)
+else:
+    print(name + ' is my pet.')
+The output may look something like this:
+
+Enter a pet name:
+Footfoot
+I do not have a pet named Footfoot
+The Multiple Assignment Trick
+----------------------------
+>>> cat = ['fat', 'orange', 'loud']
+>>> size = cat[0]
+>>> color = cat[1]
+>>> disposition = cat[2]
+you could type this line of code:
+
+>>> cat = ['fat', 'orange', 'loud']
+>>> size, color, disposition = cat
+The number of variables and the length of the list must be exactly equal, or Python will give you a ValueError:
+
+>>> cat = ['fat', 'orange', 'loud']
+>>> size, color, disposition, name = cat
+Traceback (most recent call last):
+  File "<pyshell#84>", line 1, in <module>
+    size, color, disposition, name = cat
+ValueError: need more than 3 values to unpack
+The multiple assignment trick can also be used to swap the values in two variables:
+
+>>> a, b = 'Alice', 'Bob'
+>>> a, b = b, a
+>>> print(a)
+'Bob'
+>>> print(b)
+'Alice'
+Augmented Assignment Operators
+--------------------------------
+>>> spam = 42
+>>> spam = spam + 1
+>>> spam
+43
+As a shortcut, you can use the augmented assignment operator += to do the same thing:
+
+>>> spam = 42
+>>> spam += 1
+>>> spam
+43
+There are augmented assignment operators for the +, -, *, /, and % operators, described in Table 4-1.
+Table 4-1. The Augmented Assignment Operators
+Augmented assignment statement    Equivalent assignment statement
+---------------------------------------------------------------------
+spam += 1                         spam = spam + 1
+spam -= 1                         spam = spam - 1
+spam *= 1                         spam = spam * 1
+spam /= 1                         spam = spam / 1
+spam %= 1                         spam = spam % 1
+--------------------------------------------------------------------
+>>> spam = 'Hello'
+>>> spam += ' world!'
+>>> spam
+'Hello world!'
+
+>>> bacon = ['Zophie']
+>>> bacon *= 3
+>>> bacon
+['Zophie', 'Zophie', 'Zophie']
+Methods
+--------
+Finding a Value in a List with the index() Method
+--------------------------------------------
+>>> spam = ['hello', 'hi', 'howdy', 'heyas']
+>>> spam.index('hello')
+0
+>>> spam.index('heyas')
+3
+>>> spam.index('howdy howdy howdy')
+Traceback (most recent call last):
+  File "<pyshell#31>", line 1, in <module>
+    spam.index('howdy howdy howdy')
+ValueError: 'howdy howdy howdy' is not in list
+When there are duplicates of the value in the list, the index of its first appearance is returned. Enter the following into the interactive shell, and notice that index() returns 1, not 3:
+
+>>> spam = ['Zophie', 'Pooka', 'Fat-tail', 'Pooka']
+>>> spam.index('Pooka')
+1
    Example Program: Magic 8 Ball with a List
    -----------------------------------------
 magic8Ball2.py.
