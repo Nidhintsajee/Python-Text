@@ -235,6 +235,87 @@ Changing Values in a List with Indexes
 ['cat', 'aardvark', 'aardvark', 12345]
 List Concatenation and List Replication
 ----------------------------------------
+>>> [1, 2, 3] + ['A', 'B', 'C']
+[1, 2, 3, 'A', 'B', 'C']
+>>> ['X', 'Y', 'Z'] * 3
+['X', 'Y', 'Z', 'X', 'Y', 'Z', 'X', 'Y', 'Z']
+>>> spam = [1, 2, 3]
+>>> spam = spam + ['A', 'B', 'C']
+>>> spam
+[1, 2, 3, 'A', 'B', 'C']
+Removing Values from Lists with del Statements
+----------------------------------------------
+>>> spam = ['cat', 'bat', 'rat', 'elephant']
+>>> del spam[2]
+>>> spam
+['cat', 'bat', 'elephant']
+>>> del spam[2]
+>>> spam
+['cat', 'bat']
+Working with Lists
+-----------------
+catName1 = 'Zophie'
+catName2 = 'Pooka'
+catName3 = 'Simon'
+catName4 = 'Lady Macbeth'
+catName5 = 'Fat-tail'
+catName6 = 'Miss Cleo'
+allMyCats1.py:
+
+print('Enter the name of cat 1:')
+catName1 = input()
+print('Enter the name of cat 2:')
+catName2 = input()
+print('Enter the name of cat 3:')
+catName3 = input()
+print('Enter the name of cat 4:')
+catName4 = input()
+print('Enter the name of cat 5:')
+catName5 = input()
+print('Enter the name of cat 6:')
+catName6 = input()
+print('The cat names are:')
+print(catName1 + ' ' + catName2 + ' ' + catName3 + ' ' + catName4 + ' ' +
+catName5 + ' ' + catName6)
+ allMyCats2.py:
+
+catNames = []
+while True:
+    print('Enter the name of cat ' + str(len(catNames) + 1) +
+      ' (Or enter nothing to stop.):')
+    name = input()
+    if name == '':
+        break
+    catNames = catNames + [name] # list concatenation
+print('The cat names are:')
+for name in catNames:
+    print('  ' + name)
+When you run this program, the output will look something like this:
+
+Enter the name of cat 1 (Or enter nothing to stop.):
+Zophie
+Enter the name of cat 2 (Or enter nothing to stop.):
+Pooka
+Enter the name of cat 3 (Or enter nothing to stop.):
+Simon
+Enter the name of cat 4 (Or enter nothing to stop.):
+Lady Macbeth
+Enter the name of cat 5 (Or enter nothing to stop.):
+Fat-tail
+Enter the name of cat 6 (Or enter nothing to stop.):
+Miss Cleo
+Enter the name of cat 7 (Or enter nothing to stop.):
+
+The cat names are:
+  Zophie
+  Pooka
+  Simon
+  Lady Macbeth
+  Fat-tail
+  Miss Cleo
+The benefit of using a list is that your data is now in a structure, so your program is much more flexible in processing the data than it would be with several repetitive variables.
+Using for Loops with Lists
+--------------------------
    Example Program: Magic 8 Ball with a List
    -----------------------------------------
 magic8Ball2.py.
